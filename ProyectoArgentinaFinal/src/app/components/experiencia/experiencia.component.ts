@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Experiencia } from 'src/app/Model/experiencia.model';
 import { experienciaService } from 'src/app/service/experiencia.service';
 

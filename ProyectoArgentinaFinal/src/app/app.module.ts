@@ -18,7 +18,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { ExperiEditarComponent } from './components/experi-editar/experi-editar.component'
+import { ExperiEditarComponent } from './components/experi-editar/experi-editar.component';
+import { EdueditarComponent } from './components/edueditar/edueditar.component'
 
 
 
@@ -37,7 +38,8 @@ import { ExperiEditarComponent } from './components/experi-editar/experi-editar.
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    ExperiEditarComponent
+    ExperiEditarComponent,
+    EdueditarComponent
   ],
   imports: [
     BrowserModule,

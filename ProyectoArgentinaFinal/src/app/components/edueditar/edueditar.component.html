@@ -1,0 +1,10 @@
+<div class="container">
+    <label for="nombreEducacion"> Nombre de Educacion </label>
+    <input type="text" id="nombreEducacion" name="nombreEducacion" [(ngModel)]="editEducacion.nombreEducacion">
+    <br>
+    <label for="descEducacion"> Descripcion </label>
+    <input type="text" id="descEducacion" id="descEducacion" [(ngModel)]="editEducacion.descEducacion">
+
+    <button type="button" class="btn btn-primary" (click)="modificarEducacion()"> Actualizar </button>
+    
+</div>

@@ -26,7 +26,5 @@ export class ExperiEditarComponent implements OnInit {
       data=>{
       this.router.navigate(['/home']);}
      );
-    
-  }
-
+    }
 }

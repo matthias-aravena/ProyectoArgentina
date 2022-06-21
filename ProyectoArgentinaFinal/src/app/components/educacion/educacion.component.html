@@ -1,27 +1,47 @@
-<div class="row">
-    <h1>Estudios Cursados</h1>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-11">
-        <ul>
-            <li>
-            <h1>Estudio 1</h1> - <h3>(años)</h3>
-            </li>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quisquam dicta adipisci doloremque quibusdam at nihil? Enim architecto veniam incidunt. Blanditiis maiores, nihil ipsam temporibus officia natus eveniet tenetur reiciendis
-            </p>
-        </ul>
-        <ul>
-            <li>
-            <h1>Estudio 2</h1> - <h3>(años)</h3>
-            </li>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quisquam dicta adipisci doloremque quibusdam at nihil? Enim architecto veniam incidunt. Blanditiis maiores, nihil ipsam temporibus officia natus eveniet tenetur reiciendis
-            </p>
-        </ul>
-        <ul>
-            <li>
-            <h1>Estudio 3</h1> - <h3>(años)</h3>
-            </li>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quisquam dicta adipisci doloremque quibusdam at nihil? Enim architecto veniam incidunt. Blanditiis maiores, nihil ipsam temporibus officia natus eveniet tenetur reiciendis
-            </p>
-        </ul>
-    </div>
-</div>
+<div class="row" >
+    <div class="text-aling">
+   <h1>Estudios Cursados</h1>
+   
+   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">agregar educacion</button>
+   <!-- Button trigger modal -->
+   <!-- Modal -->
+   <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel1">Agregar Educacion</h5>
+         <button type="button" class="btn-close" data-bs-dismiss="modal"    aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+         <form action="">
+             <label for="nombreEducacion"> Una educacion mas</label>
+             <input type="text" id="nombreEducacion" name="nombreEducacion" [(ngModel)]="nuevaEducacion.nombreEducacion">
+              <br>
+             <label for="descEducacion">Descripcion</label>
+             <input type="text" id="descEducacion" name="descEducacion" [(ngModel)]="nuevaEducacion.descEducacion">
+         </form>
+          </div>
+          <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)="agregarEducacion()">Guardar</button>
+          </div>
+         </div>
+       </div>
+   </div>
+   
+   </div>   
+   <div class="col-lg-1"></div>
+   <div class="col-lg-11">
+       <div *ngFor="let educacion of lista">
+       <ul>
+           <li>
+           <h1>{{educacion.nombreEducacion}}</h1> - <h3>(años)</h3>
+           
+           <p>{{educacion.descEducacion}}
+           </p>
+           
+           <button  class="btn btn-danger" (click)="eliminarEducacion(educacion.id)">Eliminar</button>
+           <button class="btn btn-warning" [routerLink]="['/editeducacion/', educacion.id]">Editar</button>
+        </ul>   
+        </div>
+   </div> 

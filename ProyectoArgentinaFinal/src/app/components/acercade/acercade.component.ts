@@ -14,25 +14,20 @@ import { PersonaService } from 'src/app/service/persona.service';
 export class AcercadeComponent implements OnInit {
   lista:any=[];
   nuevoAcercade: Acercade={id:'', nombre:'', titulo:'', sobreMi:''};
-  id: string ="";
-  editAcercade:  Acercade={id:'', nombre: '', titulo:'', sobreMi:''};
+
+
 persona: persona = new persona(" "," "," ");
 image = '';
 imgUrl = 'assets/portfolio.png' ;
   constructor(public personaService: PersonaService,
                private htttp:HttpClient,
-               private AcercadeService: acercadeService,
-               private activatedRoute: ActivatedRoute,
-               private router: Router ) { }
+               private AcercadeService: acercadeService) { }
 
   ngOnInit(): void {
     this.personaService.getPersona().subscribe(data => {this.persona = data}),
     this.listarAcercade();
-    this.id= this.activatedRoute.snapshot.params['id'];
-    this.AcercadeService.getunAcercade(this.id).subscribe(
-      data=>{this.editAcercade=data;}
-    );
-  }
+
+}
   listarAcercade(){
     this.AcercadeService.getAcercade().subscribe(
       res=>{this.lista=res}
@@ -48,12 +43,8 @@ imgUrl = 'assets/portfolio.png' ;
       res=>{this.listarAcercade();}
     );
   }
-  modificarAcercade(){
-    this.AcercadeService.editarAcercade(this.id, this.editAcercade).subscribe(
-      data=>{
-      this.router.navigate(['/home']);}
-     );
-    }
+
+
 
 
 
@@ -62,13 +53,13 @@ imgUrl = 'assets/portfolio.png' ;
     console.log(event);
    if(event.target.files.length > 0){
    const file = event.target.files[0];
-   const reader = new FileReader();   
+   const reader = new FileReader();
    reader.readAsDataURL(file);
   reader.onload = (event: any) =>{
   this.imgUrl = event.target.result;
    }
-   this.image= file; 
-   
+   this.image= file;
+
    }
   }
   onSubmit(){

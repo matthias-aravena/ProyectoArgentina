@@ -23,8 +23,8 @@ export class acercadeService {
     guardarAcercade(acercade: Acercade):Observable<any>{
         return this.http.post(this.url, acercade);
     }
-    editarAcercade(id: string, acercade: Acercade):Observable<any>{
-        return this.http.put<any>(this.url+'/'+id, acercade); 
+    editarAcercade(id: string, acercade: Acercade):Observable<Acercade>{
+        return this.http.put<Acercade>(this.url+'/'+id, acercade);
     }
 
     deleteAcercade(id:string):Observable<any>{

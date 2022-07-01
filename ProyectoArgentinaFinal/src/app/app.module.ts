@@ -24,6 +24,7 @@ import { EdueditarComponent } from './components/edueditar/edueditar.component'
 import { CommonModule } from '@angular/common';
 import { AcercaeditComponent } from './components/acercaedit/acercaedit.component';
 import { AcercaeditsobremiComponent } from './components/acercaeditsobremi/acercaeditsobremi.component';
+import { ProyeditComponent } from './components/proyedit/proyedit.component';
 
 
 
@@ -45,7 +46,8 @@ import { AcercaeditsobremiComponent } from './components/acercaeditsobremi/acerc
     ExperiEditarComponent,
     EdueditarComponent,
     AcercaeditComponent,
-    AcercaeditsobremiComponent
+    AcercaeditsobremiComponent,
+    ProyeditComponent
   ],
   imports: [
     BrowserModule,

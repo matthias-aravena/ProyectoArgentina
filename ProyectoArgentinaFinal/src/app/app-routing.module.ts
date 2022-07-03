@@ -6,6 +6,7 @@ import { EdueditarComponent } from './components/edueditar/edueditar.component';
 import { ExperiEditarComponent } from './components/experi-editar/experi-editar.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProyeditComponent } from './components/proyedit/proyedit.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'editeducacion/:id', component: EdueditarComponent },
   {path: 'editacerca/:id', component: AcercaeditComponent},
   {path: 'editsobremi/:id', component: AcercaeditsobremiComponent},
+  {path: 'editproyecto/:id', component: ProyeditComponent},
   {path: '', redirectTo:'home', pathMatch:'full'}
 
 ];

@@ -8,6 +8,7 @@ import com.proyectofinal.argentinaprograma.Entity.Banner;
 import com.proyectofinal.argentinaprograma.Service.BannerService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,6 +33,7 @@ public class BannerController {
         return bannerService.findAll();
     }
     //guardar
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/banners")
     public Banner guardar(@RequestBody Banner banner){
         return bannerService.save(banner);
@@ -42,12 +44,14 @@ public class BannerController {
     }
     
     //actualizar
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("banners/{id}")
     public Banner actualizar(@RequestBody Banner banner, @PathVariable Long id ){
         Banner bannerActual= bannerService.findById(id);
         bannerActual.setImagenBanner(banner.getImagenBanner());
         return bannerService.save(bannerActual);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/banners/{id}")
     public void eliminar(@PathVariable Long id){
       bannerService.delete(id);  

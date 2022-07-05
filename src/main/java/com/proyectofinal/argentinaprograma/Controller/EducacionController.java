@@ -9,6 +9,7 @@ import com.proyectofinal.argentinaprograma.Entity.Educacion;
 import com.proyectofinal.argentinaprograma.Service.EducacionService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,7 @@ public class EducacionController {
         return educacionService.findAll();
     }
     //guardar
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/educaciones")
     public Educacion guardar(@RequestBody Educacion educacion){
         return educacionService.save(educacion);
@@ -42,6 +44,7 @@ public class EducacionController {
     }
     
     //actualizar
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/educaciones/{id}")
     public Educacion actualizar(@RequestBody Educacion educacion, @PathVariable Long id ){
         Educacion educacionActual= educacionService.findById(id);
@@ -49,6 +52,7 @@ public class EducacionController {
         educacionActual.setDescEducacion(educacion.getDescEducacion());
         return educacionService.save(educacionActual);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/educaciones/{id}")
     public void eliminar(@PathVariable Long id){
       educacionService.delete(id);  

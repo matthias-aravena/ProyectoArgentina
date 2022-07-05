@@ -5,10 +5,10 @@
 package com.proyectofinal.argentinaprograma.Controller;
 
 import com.proyectofinal.argentinaprograma.Entity.Experiencia;
-import com.proyectofinal.argentinaprograma.Repository.RepoExperiencia;
 import com.proyectofinal.argentinaprograma.Service.ExperienciaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +32,7 @@ public class ExperienciaController {
         return experienciaService.findAll();
     }
     //guardar
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/experiencias")
     public Experiencia guardar(@RequestBody Experiencia experiencia){
         return experienciaService.save(experiencia);
@@ -42,6 +43,7 @@ public class ExperienciaController {
     }
     
     //actualizar
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/experiencias/{id}")
     public Experiencia actualizar(@RequestBody Experiencia experiencia, @PathVariable Long id ){
         Experiencia experienciaActual= experienciaService.findById(id);
@@ -49,6 +51,7 @@ public class ExperienciaController {
         experienciaActual.setDescTrabajo(experiencia.getDescTrabajo());
         return experienciaService.save(experienciaActual);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/experiencias/{id}")
     public void eliminar(@PathVariable Long id){
       experienciaService.delete(id);  

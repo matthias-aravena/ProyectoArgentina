@@ -8,6 +8,7 @@ import com.proyectofinal.argentinaprograma.Entity.Acercade;
 import com.proyectofinal.argentinaprograma.Service.AcercadeService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +32,7 @@ public class AcercadeController {
         return acercadeService.findAll();
     }
     //guardar
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/acerca")
     public Acercade guardar(@RequestBody Acercade acercade){
         return acercadeService.save(acercade);
@@ -41,6 +43,7 @@ public class AcercadeController {
     }
     
     //actualizar
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/acerca/{id}")
     public Acercade actualizar(@RequestBody Acercade acercade, @PathVariable Long id ){
         Acercade acercadeActual= acercadeService.findById(id);
@@ -49,6 +52,7 @@ public class AcercadeController {
         acercadeActual.setSobreMi(acercade.getSobreMi());
         return acercadeService.save(acercadeActual);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/acerca/{id}")
     public void eliminar(@PathVariable Long id){
       acercadeService.delete(id);  

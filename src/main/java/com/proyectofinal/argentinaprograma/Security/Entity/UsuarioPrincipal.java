@@ -8,12 +8,14 @@ package com.proyectofinal.argentinaprograma.Security.Entity;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Getter
+
 public class UsuarioPrincipal implements UserDetails{
     private String nombre;
     private String nombreUsuario;

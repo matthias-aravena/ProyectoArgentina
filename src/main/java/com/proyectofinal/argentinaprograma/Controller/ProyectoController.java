@@ -8,6 +8,7 @@ import com.proyectofinal.argentinaprograma.Entity.Proyecto;
 import com.proyectofinal.argentinaprograma.Service.ProyectoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +32,7 @@ public class ProyectoController {
         return proyectoService.findAll();
     }
     //guardar
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/proyectos")
     public Proyecto guardar(@RequestBody Proyecto proyecto){
         return proyectoService.save(proyecto);
@@ -41,6 +43,7 @@ public class ProyectoController {
     }
     
     //actualizar
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/proyectos/{id}")
     public Proyecto actualizar(@RequestBody Proyecto proyecto, @PathVariable Long id ){
         Proyecto proyectoActual= proyectoService.findById(id);
@@ -49,6 +52,7 @@ public class ProyectoController {
         proyectoActual.setDescProyecto(proyecto.getDescProyecto());
         return proyectoService.save(proyectoActual);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/proyectos/{id}")
     public void eliminar(@PathVariable Long id){
       proyectoService.delete(id);

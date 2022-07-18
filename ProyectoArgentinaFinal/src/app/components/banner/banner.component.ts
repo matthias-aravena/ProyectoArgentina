@@ -11,22 +11,22 @@ export class BannerComponent implements OnInit {
   imageBanner = '';
   imgURL = 'assets/portfolio.png';
   constructor(private BannerService: bannerService,
-              private htttp:HttpClient) { }
+              private http:HttpClient) { }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
+
+
   selectImageBanner(event: any){
     console.log(event);
    if(event.target.files.length > 0){
    const file = event.target.files[0];
-   const reader = new FileReader();   
+   const reader = new FileReader();
    reader.readAsDataURL(file);
   reader.onload = (event: any) =>{
   this.imgURL = event.target.result;
    }
-   this.imageBanner= file; 
-   
+   this.imageBanner= file;
+
    }
   }
   onSubmit(){

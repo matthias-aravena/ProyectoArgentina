@@ -1,4 +1,4 @@
-export interface Acercade{
+export interface Acercade {
     id:string;
     nombre:string;
     titulo:string;

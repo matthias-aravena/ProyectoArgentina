@@ -1,66 +1,79 @@
 <div class="row">
     <h1>Hard & Skills</h1>
-<div class=" text-center col-sm-4 col-md-4 col-lg-4">    
-<circle-progress
-  [percent]="85"
+<div class=" text-center col-sm-4 col-md-4 col-lg-4">
+  <div *ngFor="let skill of lista">
+    <circle-progress
+    [percent]="80"
+    [radius]="100"
+    [imageSrc]="'../assets/html5.png'"
+    [imageHeight]="55"
+    [imageWidth]="55"
+    [showImage]="true"
+    [showUnits]="false"
+    [subtitle]="'boca juniors'"
+    [outerStrokeWidth]="16"
+    [innerStrokeWidth]="8"
+    [outerStrokeColor]="'#78C000'"
+    [innerStrokeColor]="'#C7E596'"
+    [animation]="true"
+    [animationDuration]="300"
+  ></circle-progress>
+  <div>
+    <p>{{skill.nombreSkill}}</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="text-center col-sm-4 col-md-4 col-lg-4">
+<div>
+  <circle-progress
+  [percent]="80"
   [radius]="100"
-  [imageSrc]="'../assets/html5.png'"
-  [imageHeight]="60"
-  [imageWidth]="60"
+  [imageSrc]="'../assets/css.png'"
+  [imageHeight]="75"
+  [imageWidth]="75"
   [showImage]="true"
   [showUnits]="false"
-  [subtitle]="'boca juniors'"
   [outerStrokeWidth]="16"
   [innerStrokeWidth]="8"
   [outerStrokeColor]="'#78C000'"
   [innerStrokeColor]="'#C7E596'"
   [animation]="true"
   [animationDuration]="300"
-></circle-progress>
+  ></circle-progress></div>
+  <p>CSS</p>
 </div>
-
-<div class="text-center col-sm-4 col-md-4 col-lg-4">    
-<circle-progress
-[percent]="85"
-[radius]="100"
-[outerStrokeWidth]="16"
-[innerStrokeWidth]="8"
-[outerStrokeColor]="'#78C000'"
-[innerStrokeColor]="'#C7E596'"
-[animation]="true"
-[animationDuration]="300"
-></circle-progress></div>
-
-<div class="text-center col-sm-4 col-md-4 col-lg-4">    
-<circle-progress
-[percent]="85"
-[radius]="100"
-[outerStrokeWidth]="16"
-[innerStrokeWidth]="8"
-[outerStrokeColor]="'#78C000'"
-[innerStrokeColor]="'#C7E596'"
-[animation]="true"
-[animationDuration]="300"
-></circle-progress>
+<div class="text-center col-sm-4 col-md-4 col-lg-4">
+  <div>
+    <circle-progress
+    [percent]="70"
+    [radius]="100"
+    [imageSrc]="'../assets/javascript.png'"
+    [imageHeight]="75"
+    [imageWidth]="75"
+    [showImage]="true"
+    [showUnits]="false"
+    [outerStrokeWidth]="16"
+    [innerStrokeWidth]="8"
+    [outerStrokeColor]="'#78C000'"
+    [innerStrokeColor]="'#C7E596'"
+    [animation]="true"
+    [animationDuration]="300"
+    ></circle-progress>
+    <p>JavaScript</p>
+  </div>
 </div>
-
-<div class="text-center col-sm-4 col-md-4 col-lg-4">    
+<div class="text-center col-sm-4 col-md-4 col-lg-4">
+<div>
 <circle-progress
 [percent]="85"
 [radius]="100"
-[outerStrokeWidth]="16"
-[innerStrokeWidth]="8"
-[outerStrokeColor]="'#78C000'"
-[innerStrokeColor]="'#C7E596'"
-[animation]="true"
-[animationDuration]="300"
-></circle-progress>
-</div>
-            
-<div class="text-center col-sm-4 col-md-4 col-lg-4">    
-<circle-progress
-[percent]="85"
-[radius]="100"
+[imageSrc]="'../assets/node.png'"
+[imageHeight]="75"
+[imageWidth]="75"
+[showImage]="true"
+[showUnits]="false"
 [outerStrokeWidth]="16"
 [innerStrokeWidth]="8"
 [outerStrokeColor]="'#78C000'"
@@ -68,12 +81,40 @@
 [animation]="true"
 [animationDuration]="300"
 ></circle-progress>
+<p>Node js</p>
+</div>
+</div>
+<div class="text-center col-sm-4 col-md-4 col-lg-4">
+<div>
+  <circle-progress
+  [percent]="60"
+  [radius]="100"
+  [imageSrc]="'../assets/mysql.png'"
+  [imageHeight]="75"
+  [imageWidth]="75"
+  [showImage]="true"
+  [showUnits]="false"
+  [outerStrokeWidth]="16"
+  [innerStrokeWidth]="8"
+  [outerStrokeColor]="'#78C000'"
+  [innerStrokeColor]="'#C7E596'"
+  [animation]="true"
+  [animationDuration]="300"
+  ></circle-progress>
+  <p>MySql</p>
+  </div>
 </div>
 
-<div class="text-center col-sm-4 col-md-4 col-lg-4">    
+<div class="text-center col-sm-4 col-md-4 col-lg-4">
+<div>
 <circle-progress
-[percent]="85"
+[percent]="50"
 [radius]="100"
+[imageSrc]="'../assets/ingles.svg'"
+[imageHeight]="75"
+[imageWidth]="75"
+[showImage]="true"
+[showUnits]="false"
 [outerStrokeWidth]="16"
 [innerStrokeWidth]="8"
 [outerStrokeColor]="'#78C000'"
@@ -81,6 +122,8 @@
 [animation]="true"
 [animationDuration]="300"
 ></circle-progress>
+<p>Inglish</p>
+</div>
+</div>
 </div>
 
-</div>

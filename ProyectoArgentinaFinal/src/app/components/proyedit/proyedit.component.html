@@ -1,0 +1,10 @@
+<div class="container">
+  <label for="tituloProyecto"> Nombre de Trabajo </label>
+  <input type="text" id="tituloProyecto" name="tituloProyecto" [(ngModel)]="editProyecto.tituloProyecto">
+  <br>
+  <label for="descProyecto"> Descripcion de Trabajo </label>
+  <input type="text" id="descProyecto" id="descProyecto" [(ngModel)]="editProyecto.descProyecto">
+
+  <button type="button" class="btn btn-primary" (click)="modificarProyecto()"> Cambiar </button>
+
+</div>

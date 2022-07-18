@@ -11,4 +11,28 @@
 .img-proyecto{
     box-shadow: 10px 10px 30px #0000;
     box-shadow: ejeX ejeY difumasion color;
-}    
+}
+
+.proyec img{
+  height: 200px;
+  width: 600px;
+}
+
+
+.lapizProyecto{
+  position: absolute;
+  left: 97%;
+  color: aliceblue;
+}
+
+.circulo{
+  height: 25px;
+  width: 25px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  margin-top: 3px;
+  right: 18px;
+  opacity: 0.5;
+}
+

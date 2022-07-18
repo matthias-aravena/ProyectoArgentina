@@ -18,7 +18,7 @@ div{
      box-shadow: 3px 3px 3px gray;
      left: 2%;
      top: 315px;
-     
+
 }}
 /**@media (min-width: 998px ){
     #perfilfoto{
@@ -43,5 +43,15 @@ div{
     position: absolute;
     left: 30%;
     top:70%;
+}
+.lapiz4{
+  position: absolute;
+  left: 85%;
+  top:70%
+}
+.cruz01{
+  position: absolute;
+  left: 88%;
+  top: 70%;
 }
 

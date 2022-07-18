@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,10 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ExperiEditarComponent } from './components/experi-editar/experi-editar.component';
 import { EdueditarComponent } from './components/edueditar/edueditar.component'
+import { CommonModule } from '@angular/common';
+import { AcercaeditComponent } from './components/acercaedit/acercaedit.component';
+import { AcercaeditsobremiComponent } from './components/acercaeditsobremi/acercaeditsobremi.component';
+import { ProyeditComponent } from './components/proyedit/proyedit.component';
 
 
 
@@ -39,7 +44,10 @@ import { EdueditarComponent } from './components/edueditar/edueditar.component'
     HomeComponent,
     LoginComponent,
     ExperiEditarComponent,
-    EdueditarComponent
+    EdueditarComponent,
+    AcercaeditComponent,
+    AcercaeditsobremiComponent,
+    ProyeditComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +55,8 @@ import { EdueditarComponent } from './components/edueditar/edueditar.component'
     NgCircleProgressModule.forRoot({}),
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

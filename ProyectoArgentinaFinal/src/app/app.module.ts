@@ -18,13 +18,14 @@ import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
 import { ExperiEditarComponent } from './components/experi-editar/experi-editar.component';
 import { EdueditarComponent } from './components/edueditar/edueditar.component'
 import { CommonModule } from '@angular/common';
 import { AcercaeditComponent } from './components/acercaedit/acercaedit.component';
 import { AcercaeditsobremiComponent } from './components/acercaeditsobremi/acercaeditsobremi.component';
 import { ProyeditComponent } from './components/proyedit/proyedit.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegistroComponent } from './auth/registro/registro.component';
 
 
 
@@ -42,12 +43,13 @@ import { ProyeditComponent } from './components/proyedit/proyedit.component';
     ProyectosComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent,
     ExperiEditarComponent,
     EdueditarComponent,
     AcercaeditComponent,
     AcercaeditsobremiComponent,
-    ProyeditComponent
+    ProyeditComponent,
+    LoginComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,

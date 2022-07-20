@@ -22,7 +22,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-public class Usuario {
+public class Usuariop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -34,21 +34,21 @@ public class Usuario {
     @NotNull
     private String email;
     @NotNull
-    private String contraseña;
+    private String password;
     @NotNull
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"),
     inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
 
-    public Usuario() {
+    public Usuariop() {
     }
 
-    public Usuario(String nombre, String nombreUsuario, String email, String contraseña) {
+    public Usuariop(String nombre, String nombreUsuario, String email, String password) {
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
-        this.contraseña = contraseña;
+        this.password = password;
     }
     
     

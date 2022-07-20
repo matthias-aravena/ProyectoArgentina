@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins="*")
+@CrossOrigin(origins="http://localhost:4200")
 @RequestMapping("/educacion")
 public class EducacionController {
     @Autowired
     private EducacionService educacionService;
 
-//listar
+    //listar
     @GetMapping("/educaciones")
     public List<Educacion> listar(){
         return educacionService.findAll();

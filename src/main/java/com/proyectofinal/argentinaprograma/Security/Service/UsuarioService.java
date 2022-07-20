@@ -4,7 +4,7 @@
  */
 package com.proyectofinal.argentinaprograma.Security.Service;
 
-import com.proyectofinal.argentinaprograma.Security.Entity.Usuario;
+import com.proyectofinal.argentinaprograma.Security.Entity.Usuariop;
 import com.proyectofinal.argentinaprograma.Security.Repository.UsuarioRepo;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class UsuarioService {
     @Autowired
     UsuarioRepo usuarioRepo;
     
-    public Optional<Usuario> getByNombreUsuario(String nombreUsuario){
+    public Optional<Usuariop> getByNombreUsuario(String nombreUsuario){
         return usuarioRepo.findByNombreUsuario(nombreUsuario);
     }   
     public boolean existsByNombreUsuario(String nombreUsuario){
@@ -26,7 +26,7 @@ public class UsuarioService {
     public boolean existsByEmail(String email){
         return usuarioRepo.existsByEmail(email);
     }
-    public void save(Usuario usuario){
-        usuarioRepo.save(usuario);
+    public void save(Usuariop usuariop){
+        usuarioRepo.save(usuariop);
     }
 }

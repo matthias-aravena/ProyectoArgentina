@@ -4,7 +4,7 @@
  */
 package com.proyectofinal.argentinaprograma.Security.Service;
 
-import com.proyectofinal.argentinaprograma.Security.Entity.Usuario;
+import com.proyectofinal.argentinaprograma.Security.Entity.Usuariop;
 import com.proyectofinal.argentinaprograma.Security.Entity.UsuarioPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,8 +20,8 @@ public class UserDetailServiceImpl implements UserDetailsService{
     UsuarioService usuarioService;
     @Override
     public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
-        Usuario usuario = usuarioService.getByNombreUsuario(nombreUsuario).get();
-        return UsuarioPrincipal.build(usuario);
+        Usuariop usuariop = usuarioService.getByNombreUsuario(nombreUsuario).get();
+        return UsuarioPrincipal.build(usuariop);
     }
     
 }

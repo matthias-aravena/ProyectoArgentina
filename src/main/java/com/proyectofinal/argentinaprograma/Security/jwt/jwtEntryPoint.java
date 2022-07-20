@@ -5,7 +5,8 @@
 package com.proyectofinal.argentinaprograma.Security.jwt;
 
 import java.io.IOException;
-import javax.naming.AuthenticationException;
+
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.AuthenticationException;
+
 import org.springframework.security.web.AuthenticationEntryPoint;
 
 
@@ -25,13 +28,16 @@ public class jwtEntryPoint implements AuthenticationEntryPoint{
     
     
     @Override
-    public void commence(HttpServletRequest req, HttpServletResponse res,
-            org.springframework.security.core.AuthenticationException e)
+    public void commence(HttpServletRequest req, HttpServletResponse res, AuthenticationException e)
             throws IOException, ServletException {
-        logger.error("error en el metodo commence");
-        res.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+        logger.error("error en el metodo commence" + e.getMessage());
+        String s = "no autorizado";
+        res.resetBuffer();
+        res.sendError(HttpServletResponse.SC_UNAUTHORIZED, s);
+        res.setHeader("Content-Type", "application/json");
+        res.getOutputStream().print("{\"status\":401, \"error\":\"Unauthorized\",\"message\": \"No esta autorizado\"}");
+        res.flushBuffer();
     }
-
     
     
 }

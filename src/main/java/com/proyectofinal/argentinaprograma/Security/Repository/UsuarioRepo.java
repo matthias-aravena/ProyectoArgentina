@@ -4,14 +4,14 @@
  */
 package com.proyectofinal.argentinaprograma.Security.Repository;
 
-import com.proyectofinal.argentinaprograma.Security.Entity.Usuario;
+import com.proyectofinal.argentinaprograma.Security.Entity.Usuariop;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UsuarioRepo extends JpaRepository<Usuario, Integer>{
-    Optional<Usuario> findByNombreUsuario(String nombreUsuario);
+public interface UsuarioRepo extends JpaRepository<Usuariop, Integer>{
+    Optional<Usuariop> findByNombreUsuario(String nombreUsuario);
     boolean existsByNombreUsuario(String nombreUsuario);
     boolean existsByEmail(String Email);
 }

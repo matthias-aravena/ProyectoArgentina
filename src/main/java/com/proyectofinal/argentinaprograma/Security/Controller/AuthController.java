@@ -6,7 +6,7 @@ package com.proyectofinal.argentinaprograma.Security.Controller;
 
 import com.proyectofinal.argentinaprograma.Dto.Mensaje;
 import com.proyectofinal.argentinaprograma.Security.Entity.Rol;
-import com.proyectofinal.argentinaprograma.Security.Entity.Usuario;
+import com.proyectofinal.argentinaprograma.Security.Entity.Usuariop;
 import com.proyectofinal.argentinaprograma.Security.Enumerado.RolNombre;
 import com.proyectofinal.argentinaprograma.Security.Service.RolService;
 import com.proyectofinal.argentinaprograma.Security.Service.UsuarioService;
@@ -35,17 +35,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/auth")
-@CrossOrigin
-public class UsuarioController {
+public class AuthController {
+    
     @Autowired
     PasswordEncoder passwordEncoder; 
+    
     @Autowired
     AuthenticationManager authenticationManager;       
+    
     @Autowired
     UsuarioService usuarioService;
+    
     @Autowired
     RolService rolService;
+    
     @Autowired   
     jwtProvider JwtProvider;
     
@@ -58,15 +63,15 @@ public class UsuarioController {
             return new ResponseEntity(new Mensaje("ya existe el nombre"), HttpStatus.BAD_REQUEST);
         if (usuarioService.existsByEmail(nuevoUsuario.getEmail()))
             return new ResponseEntity(new Mensaje("ya existe el Email"), HttpStatus.BAD_REQUEST);
-        Usuario usuario = new Usuario(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(),
-        nuevoUsuario.getEmail(), passwordEncoder.encode(nuevoUsuario.getContraseña()));
+        Usuariop usuariop = new Usuariop(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(),
+        nuevoUsuario.getEmail(), passwordEncoder.encode(nuevoUsuario.getPassword()));
         
         Set<Rol> roles = new HashSet<>();
         roles.add(rolService.getByRolNombre(RolNombre.ROLE_USUARIO).get());
         if(nuevoUsuario.getRoles().contains("admin"))
             roles.add(rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get());
-        usuario.setRoles(roles);
-        usuarioService.save(usuario);
+        usuariop.setRoles(roles);
+        usuarioService.save(usuariop);
         return new ResponseEntity(new Mensaje("usuario guardado"), HttpStatus.CREATED);
     }
     @PostMapping("/login")
@@ -74,9 +79,7 @@ public class UsuarioController {
             BindingResult bindingResult){
        if( bindingResult.hasErrors())
            return new ResponseEntity(new Mensaje("campos mal puestos"), HttpStatus.BAD_REQUEST);
-       Authentication authentication =
-               authenticationManager.authenticate(new UsernamePasswordAuthenticationToken
-        (loginUsuario.getNombreUsuario(), loginUsuario.getContraseña()));
+       Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUsuario.getNombreUsuario(), loginUsuario.getPassword()));
        SecurityContextHolder.getContext().setAuthentication(authentication);
        String jwt = JwtProvider.generateToken(authentication);
        UserDetails userDetails = (UserDetails)authentication.getPrincipal();

@@ -20,6 +20,6 @@ public class NuevoUsuario {
     @Email
     private String email;
     @NotBlank
-    private String contraseña;
+    private String password;
     private Set<String> roles = new HashSet<>();
 }

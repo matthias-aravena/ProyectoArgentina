@@ -9,34 +9,34 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import lombok.Getter;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-@Getter
+
 
 public class UsuarioPrincipal implements UserDetails{
-    private String nombre;
-    private String nombreUsuario;
-    private String email;
-    private String contraseña;
+    private final String nombre;
+    private final String nombreUsuario;
+    private final String email;
+    private final String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UsuarioPrincipal(String nombre, String nombreUsuario, String email, String contraseña, Collection<? extends GrantedAuthority> authorities) {
+    public UsuarioPrincipal(String nombre, String nombreUsuario, String email, String password, Collection<? extends GrantedAuthority> authorities) {
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
-        this.contraseña = contraseña;
+        this.password = password;
         this.authorities = authorities;
     }
     
-    public static UsuarioPrincipal build(Usuario usuario){
+    public static UsuarioPrincipal build(Usuariop usuariop){
         List<GrantedAuthority> authorities = 
-                usuario.getRoles().stream().map(rol -> 
+                usuariop.getRoles().stream().map(rol -> 
         new SimpleGrantedAuthority(rol.getRolNombre().name())).collect(Collectors.toList());
-        return new UsuarioPrincipal(usuario.getNombre(), 
-                usuario.getNombreUsuario(),usuario.getEmail(), usuario.getContraseña(), authorities);
+        return new UsuarioPrincipal(usuariop.getNombre(), 
+                usuariop.getNombreUsuario(),usuariop.getEmail(), usuariop.getPassword(), authorities);
     }
     
     
@@ -48,7 +48,7 @@ public class UsuarioPrincipal implements UserDetails{
 
     @Override
     public String getPassword() {
-        return contraseña;
+        return password;
     }
 
     @Override
@@ -74,5 +74,11 @@ public class UsuarioPrincipal implements UserDetails{
     @Override
     public boolean isEnabled() {
         return true;
+    }
+    public String getNombre(){
+        return nombre;
+    }
+    public String getEmail(){
+        return email;
     }
 }

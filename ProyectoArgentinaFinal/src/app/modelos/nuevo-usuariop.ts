@@ -1,7 +1,7 @@
 export class NuevoUsuariop {
-  nombre!: string;
-  nombreUsuario!: string;
-  email!: string;
-  contra!: string;
-  authorities!: string[];
+  nombre: string;
+  nombreUsuario: string;
+  email: string;
+  password: string;
+  authorities: string[];
 }

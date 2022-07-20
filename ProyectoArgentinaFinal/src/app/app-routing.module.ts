@@ -11,7 +11,7 @@ import { ProyeditComponent } from './components/proyedit/proyedit.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path:'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'editexperiencia/:id', component: ExperiEditarComponent},
   {path: 'editeducacion/:id', component: EdueditarComponent },

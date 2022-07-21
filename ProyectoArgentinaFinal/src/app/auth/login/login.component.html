@@ -1,3 +1,4 @@
+<app-logo-ap></app-logo-ap>
 <div class="text-center" *ngIf="isLogged; else loggedOut">
  <h2>iniciaste sesion</h2>
 </div>
@@ -32,6 +33,7 @@
                 <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">Iniciar Sesion</button>
               </div>
           </form>
+          <div *ngIf="f.submitted && isLoggedFail" class="alert alert-danger mt-3">Error en el login </div>
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { HardSkillsComponent } from './components/hard-skills/hard-skills.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { ExperiEditarComponent } from './components/experi-editar/experi-editar.component';
 import { EdueditarComponent } from './components/edueditar/edueditar.component'
@@ -26,6 +26,7 @@ import { AcercaeditsobremiComponent } from './components/acercaeditsobremi/acerc
 import { ProyeditComponent } from './components/proyedit/proyedit.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
+import { EduInterceptorService } from './interceptors/edu-interceptor.service';
 
 
 
@@ -60,7 +61,11 @@ import { RegistroComponent } from './auth/registro/registro.component';
     ReactiveFormsModule,
     CommonModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: EduInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

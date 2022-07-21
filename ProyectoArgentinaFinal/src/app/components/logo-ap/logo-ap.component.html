@@ -5,24 +5,26 @@
        </div>
 
        <div class="redes">
-       <a >
+       <a *ngIf="isLogged">
             <img src="../../../assets/facebook.png" alt="" id="Facebook">
         </a>
-        <a >
+        <a *ngIf="isLogged">
             <img src="../../../assets/twitter.png" alt="" id="Twitter">
         </a>
-        <a >
+        <a *ngIf="isLogged">
             <img src="../../../assets/instagram.png" alt="" id="Instagram">
         </a>
-        <a >
+        <a *ngIf="isLogged">
             <img src="../../../assets/linkedin.png" alt="" id="Linkedin">
         </a>
-        <a >
+        <a *ngIf="isLogged">
             <img src="../../../assets/github.png" alt="" id="Github">
         </a>
-        <button type="button" class="btn btn-outline-light" routerLink="/login">Entrar</button>
-    </div>
-       </div>
+        <button type="button" class="btn btn-outline-light" *ngIf="!isLogged" routerLink="/login">Entrar</button>
+
+        <button class="btn btn-outline-light" *ngIf="isLogged" (click)="onLogOut()">Cerrar Sesion</button>
+      </div>
+  </div>
 </div>
 
 

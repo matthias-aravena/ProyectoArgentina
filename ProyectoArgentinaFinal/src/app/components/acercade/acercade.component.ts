@@ -5,6 +5,7 @@ import { Acercade } from 'src/app/Model/acercade.model';
 import { persona } from 'src/app/Model/persona.model';
 import { acercadeService } from 'src/app/service/acercade.service';
 import { PersonaService } from 'src/app/service/persona.service';
+import { TokenService } from 'src/app/service/token.service';
 
 @Component({
   selector: 'app-acercade',
@@ -15,17 +16,26 @@ export class AcercadeComponent implements OnInit {
   lista:any=[];
   nuevoAcercade: Acercade={id:'', nombre:'', titulo:'', sobreMi:''};
 
+  roles: string[];
+  isAdmin = false;
 
 persona: persona = new persona(" "," "," ");
 image = '';
 imgUrl = 'assets/portfolio.png' ;
   constructor(public personaService: PersonaService,
                private htttp:HttpClient,
-               private AcercadeService: acercadeService) { }
+               private AcercadeService: acercadeService,
+               private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.personaService.getPersona().subscribe(data => {this.persona = data}),
     this.listarAcercade();
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if(rol === 'ROLE_ADMIN'){
+        this.isAdmin = true;
+      }
+    });
 
 }
   listarAcercade(){

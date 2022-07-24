@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Banner } from 'src/app/Model/banner.model';
 import { bannerService } from 'src/app/service/banner.service';
+import { TokenService } from 'src/app/service/token.service';
 
 @Component({
   selector: 'app-banner',
@@ -8,12 +11,54 @@ import { bannerService } from 'src/app/service/banner.service';
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent implements OnInit {
-  imageBanner = '';
+  lista:any=[];
+  nuevoBanner: Banner={id:'', imagenBanner:''};
+
+  id: string ="";
+  editBanner:  Banner={id:'', imagenBanner: ''};
+
+  roles: string[];
+  isAdmin = false;
+  imagenBanner = '';
   imgURL = 'assets/portfolio.png';
   constructor(private BannerService: bannerService,
-              private http:HttpClient) { }
+              private http:HttpClient,
+              private tokenService: TokenService,
+              private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.listarBanner();
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if(rol === 'ROLE_ADMIN'){
+        this.isAdmin = true;
+      }
+    });
+  }
+  listarBanner(){
+    this.BannerService.getBanners().subscribe(
+      res=>{this.lista=res}
+    );
+  }
+  agregarBanner(){
+    this.BannerService.guardarBanner(this.nuevoBanner).subscribe(res=>{
+      this.listarBanner();
+    });
+  }
+  eliminarBanner(id: string){
+    this.BannerService.deleteBanner(id).subscribe(
+      res=>{this.listarBanner();}
+    );
+  }
+  modificarBanner(){
+    this.BannerService.editarBanner(this.id, this.editBanner).subscribe(
+      data=>{
+      this.router.navigate(['/home']);}
+     );
+   }
+
+
+
 
 
   selectImageBanner(event: any){
@@ -25,7 +70,7 @@ export class BannerComponent implements OnInit {
   reader.onload = (event: any) =>{
   this.imgURL = event.target.result;
    }
-   this.imageBanner= file;
+   this.imagenBanner= file;
 
    }
   }

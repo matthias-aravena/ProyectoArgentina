@@ -1,5 +1,5 @@
-<div class="ban">
-  <img [src]="imgURL" alt="">
+<div class="ban" *ngFor="let banner of lista">
+  <img [src]="banner.imagenBanner" alt="">
 </div>
 
 <div type="button" class="lapiz" data-bs-toggle="modal" data-bs-target="#exampleModal2">
@@ -17,17 +17,17 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <label>Elegir</label>
-                <input class="form-control-file" type="file" name="image"
-                        accept="image/*" (change)="selectImageBanner($event)"><br>
+          <form action="">
+            <div class="form-group" *ngFor="let banner of lista">
+                <label for="imagenBanner">Elegir</label>
+                <input type="text" id="imagenBanner" name="imagenBanner"
+                  [(ngModel)]="banner.imagenBanner"><br>
             </div>
             </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" >Cambiar</button>
+          <button type="button" class="btn btn-primary" (click)="modificarBanner()">Cambiar</button>
         </div>
       </div>
     </div>

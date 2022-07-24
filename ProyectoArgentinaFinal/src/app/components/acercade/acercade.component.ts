@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Acercade } from 'src/app/Model/acercade.model';
+
 import { persona } from 'src/app/Model/persona.model';
 import { acercadeService } from 'src/app/service/acercade.service';
 import { PersonaService } from 'src/app/service/persona.service';
@@ -13,6 +14,7 @@ import { TokenService } from 'src/app/service/token.service';
   styleUrls: ['./acercade.component.css']
 })
 export class AcercadeComponent implements OnInit {
+  fotoPerfil:string;
   lista:any=[];
   nuevoAcercade: Acercade={id:'', nombre:'', titulo:'', sobreMi:''};
 

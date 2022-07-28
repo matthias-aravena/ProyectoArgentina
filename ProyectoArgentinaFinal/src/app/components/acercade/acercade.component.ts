@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Acercade } from 'src/app/Model/acercade.model';
 
-import { persona } from 'src/app/Model/persona.model';
+import { Persona } from 'src/app/Model/persona.model';
 import { acercadeService } from 'src/app/service/acercade.service';
 import { PersonaService } from 'src/app/service/persona.service';
 import { TokenService } from 'src/app/service/token.service';
@@ -14,24 +14,25 @@ import { TokenService } from 'src/app/service/token.service';
   styleUrls: ['./acercade.component.css']
 })
 export class AcercadeComponent implements OnInit {
-  fotoPerfil:string;
+
   lista:any=[];
   nuevoAcercade: Acercade={id:'', nombre:'', titulo:'', sobreMi:''};
 
   roles: string[];
   isAdmin = false;
+lista2:any=[]
+id: string ="";
+nuevaPersona: Persona={id:'', nombre:'', apellido:'', img:'' };
 
-persona: persona = new persona(" "," "," ");
-image = '';
-imgUrl = 'assets/portfolio.png' ;
   constructor(public personaService: PersonaService,
                private htttp:HttpClient,
                private AcercadeService: acercadeService,
-               private tokenService: TokenService) { }
+               private tokenService: TokenService,
+               private router: Router) { }
 
   ngOnInit(): void {
-    this.personaService.getPersona().subscribe(data => {this.persona = data}),
     this.listarAcercade();
+    this.listarPersona();
     this.roles = this.tokenService.getAuthorities();
     this.roles.forEach(rol => {
       if(rol === 'ROLE_ADMIN'){
@@ -55,26 +56,34 @@ imgUrl = 'assets/portfolio.png' ;
       res=>{this.listarAcercade();}
     );
   }
-
-
-
-
-
-
-  selectImage(event: any): void{
-    console.log(event);
-   if(event.target.files.length > 0){
-   const file = event.target.files[0];
-   const reader = new FileReader();
-   reader.readAsDataURL(file);
-  reader.onload = (event: any) =>{
-  this.imgUrl = event.target.result;
-   }
-   this.image= file;
-
-   }
+  listarPersona(){
+    this.personaService.getPersonas().subscribe(
+      res=>{this.lista2=res}
+    );
   }
-  onSubmit(){
+  modificarPersona(){
+    this.personaService.editarPersona(this.id, this.nuevaPersona).subscribe(
+      data=>{
+      this.router.navigate(['/home']);}
+     );
+   }
 
-  }
+
+
+ //selectImage(event: any): void{
+  //console.log(event);
+   //if(event.target.files.length > 0){
+   //const file = event.target.files[0];
+   //const reader = new FileReader();
+   //reader.readAsDataURL(file);
+  //reader.onload = (event: any) =>{
+  //this.imgUrl = event.target.result;
+   //}
+   //this.image= file;
+
+   //}
+  //}
+  //onSubmit(){
+
+  //} --->
 }

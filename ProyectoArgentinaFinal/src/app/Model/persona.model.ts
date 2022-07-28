@@ -1,5 +1,5 @@
-export class persona{
-    id?: number;
+export class Persona{
+    id: string;
     nombre: String;
     apellido: String;
     img: String;

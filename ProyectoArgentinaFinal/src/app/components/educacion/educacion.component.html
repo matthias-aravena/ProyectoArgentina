@@ -1,9 +1,10 @@
 <div class="row" >
     <div class="text-aling">
    <h1>Estudios Cursados</h1>
-
+   <div class="agre">
    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" *ngIf="isAdmin">agregar educacion</button>
-   <!-- Button trigger modal -->
+   </div>
+   <!-- Button  modal -->
    <!-- Modal -->
    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
      <div class="modal-dialog">
@@ -35,13 +36,13 @@
        <div *ngFor="let educacion of lista">
        <ul>
            <li>
-           <h1>{{educacion.nombreEducacion}}</h1> - <h3>(años)</h3>
+           <h1>{{educacion.nombreEducacion}}</h1>
 
            <p>{{educacion.descEducacion}}
            </p>
 
-           <button  class="btn btn-danger" (click)="eliminarEducacion(educacion.id)" *ngIf="isAdmin">Eliminar</button>
-           <button class="btn btn-warning" [routerLink]="['/editeducacion/', educacion.id]" *ngIf="isAdmin">Editar</button>
+           <button  class="btn btn-primary" (click)="eliminarEducacion(educacion.id)" *ngIf="isAdmin">Eliminar</button>
+           <button class="btn btn-primary" [routerLink]="['/editeducacion/', educacion.id]" *ngIf="isAdmin">Editar</button>
         </ul>
         </div>
    </div>

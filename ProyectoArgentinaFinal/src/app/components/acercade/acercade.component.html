@@ -1,16 +1,15 @@
 <div class="row">
-    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-        <div class="perfilfoto">
+    <div >
 
-            <div type="button" class="lapiz2"  data-bs-toggle="modal" data-bs-target="#exampleModal3" *ngIf="isAdmin">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                  </svg>
-                  </div>
-            <img [src]="" alt="">
+      <div class="perfilfoto" *ngFor="let persona of lista2">
+          <img [src]="persona.img" alt="">
+          <div class="lapiz2"  data-bs-toggle="modal" data-bs-target="#exampleModal3" *ngIf="isAdmin">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+              </svg>
+           </div>
         </div>
-
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
@@ -21,15 +20,15 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
          <div class="modal-body">
-          <form  *ngFor="let acercade of lista" >
-              <div class="form-group">
-                  <label>Elegir</label>
-                  <input class="form-control-file" type="file" name="file"
-                          accept="image/*" ><br>
+          <form   action="">
+              <div class="form-group" *ngFor="let persona of lista2">
+                <label for="img">Elegir</label>
+                <input type="text" id="img" name="img"
+                  [(ngModel)]="persona.img"><br>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" *ngIf="isAdmin">Cerrar</button>
-                <button type="submit" class="btn btn-uotline-primary" *ngIf="isAdmin">Cambiar</button>
+                <button type="submit" class="btn btn-uotline-primary" *ngIf="isAdmin" (click)="modificarPersona()">Cambiar</button>
               </div>
           </form>
           </div>
@@ -39,32 +38,29 @@
        </div>
       </div>
 
-
-
-   <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+        <div class="col">
            <div *ngFor="let acercade of lista">
-             <p>{{acercade.nombre}}</p>
-             <br>
-             <p>{{acercade.titulo}}</p>
+             <h2>{{acercade.nombre}}</h2>
 
-
-          <div type="button" class="lapiz3" [routerLink]="['/editacercade/', acercade.id]">
-
-
-          <div type="button" class="lapiz3"  [routerLink]="['/editacerca/', acercade.id]" >
-          </div>
-          <div *ngIf="isAdmin">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-              </svg>
-            </div>
+             <h4>{{acercade.titulo}}</h4>
+             <h4>Celular: 1128616138</h4>
+             <h4>Casa: 1160799522</h4>
+             <h4>msa108@gmail.com</h4>
+             <h4>Donato Alvarez 468</h4>
+             <h4>Moron, CP 1708</h4>
+             <h4>Provincia de Buenos Aires</h4>
+             <div class="lapiz3"  [routerLink]="['/editacerca/', acercade.id]" *ngIf="isAdmin">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                  </svg>
+               </div>
           </div>
         </div>
-      </div>
+
     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <div *ngFor="let acercade of lista">
-            <h1>Acerca de mi</h1>
+            <h1 class="acertitu">Acerca de mi</h1>
             <p>{{acercade.sobreMi}}</p>
             <div type="button" class="lapiz4" [routerLink]="['/editsobremi/', acercade.id]" *ngIf="isAdmin">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

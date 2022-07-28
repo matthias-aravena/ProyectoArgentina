@@ -1,0 +1,26 @@
+
+.container{
+  margin-top: 120px;
+  padding-top: 50px;
+  height: 200px;
+  width: 600px;
+  background-image: url(../../../assets/ima01.jpg);
+  text-align: center;
+  font-size: 18px;
+  font-family: Verdana, sans-serif;
+  border: groove;
+}
+
+input{
+  border: 0;
+  border-radius: 5px;
+}
+label{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 25px;
+}
+.btn{
+  color: rgb(246, 240, 251);
+  background-color: rgb(76, 140, 244);
+  border: groove;
+}

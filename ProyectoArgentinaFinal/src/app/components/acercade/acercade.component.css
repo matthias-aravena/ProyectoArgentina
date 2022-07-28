@@ -1,15 +1,9 @@
+
 .row{
     padding: 20px;
 }
-div{
-    background-color: rgb(101, 106, 238);
-    text-align: center;
-}
-#nombre{
-    font-weight: bold;
-    margin-top: 10%;
-    /**margin-left: 10px;**/
-}
+
+
 @media (min-width:576px){
 .perfilfoto img{
      position: absolute;
@@ -39,19 +33,76 @@ div{
         left: 33%;
         top: 300px;
         }}
+.lapiz2{
+  position: absolute;
+  left: 180px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  line-height: 24px;
+  text-align: center;
+  background-color: rgb(243, 250, 241);
+  color: rgb(8, 5, 5);
+  cursor: pointer;
+  box-shadow: 3px 3px 3px gray;
+}
 .lapiz3{
     position: absolute;
-    left: 30%;
-    top:70%;
+    left: 330px;
+    top: 490px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    line-height: 24px;
+    text-align: center;
+    background-color: rgb(243, 250, 241);
+    color: rgb(8, 5, 5);
+    cursor: pointer;
+    box-shadow: 3px 3px 3px gray;
 }
 .lapiz4{
   position: absolute;
-  left: 85%;
-  top:70%
+  right: 70px;
+  top:450px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  line-height: 24px;
+  text-align: center;
+  background-color: rgb(243, 250, 241);
+  color: rgb(8, 5, 5);
+  cursor: pointer;
+  box-shadow: 3px 3px 3px gray;
 }
 .cruz01{
   position: absolute;
-  left: 88%;
-  top: 70%;
+  right: 39px;
+  top: 450px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  line-height: 24px;
+  text-align: center;
+  background-color: rgb(243, 250, 241);
+  color: rgb(8, 5, 5);
+  cursor: pointer;
+  box-shadow: 3px 3px 3px gray;
 }
 
+h2{
+  font-family: Verdana, sans-serif;
+  left: 10px;
+  margin-top: 62px;
+  text-transform: uppercase;
+  color: rgb(105, 105, 243);
+
+}
+h4{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  left: 10px;
+  color: rgb(105, 105, 243);
+}
+.acertitu{
+  text-transform: uppercase;
+  margin-top: 46px;
+}

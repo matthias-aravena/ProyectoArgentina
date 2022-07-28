@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Proyecto } from 'src/app/Model/proyecto.model';
 import { proyectoService } from 'src/app/service/proyecto.service';
 
@@ -9,14 +10,16 @@ import { proyectoService } from 'src/app/service/proyecto.service';
   styleUrls: ['./proyectos.component.css']
 })
 export class ProyectosComponent implements OnInit {
-  proyecto : Proyecto = {id:'', imagenProyecto:'',tituloProyecto:''  , descProyecto:''};
+  
+  id: string ="";
+  editProyecto : Proyecto = {id:'', imagenProyecto:'',tituloProyecto:''  , descProyecto:''};
 
   lista:any=[];
   nuevoProyecto: Proyecto={id:'', imagenProyecto:'',tituloProyecto:''  , descProyecto:''};
-  imageProyecto = '';
-  imgURL = 'assets/bocaescudo.jpg';
+
   constructor(private ProyectoService: proyectoService,
-              private http: HttpClient  ) { }
+              private http: HttpClient,
+              private router: Router ) { }
 
   ngOnInit(): void {
     this.listarProyectos();
@@ -36,23 +39,29 @@ export class ProyectosComponent implements OnInit {
       res=>{this.listarProyectos();}
     );
   }
+  modificarProyecto(){
+    this.ProyectoService.editarProyecto(this.id, this.editProyecto).subscribe(
+      data=>{
+      this.router.navigate(['/home']);}
+     );
+    }
 
-  selectImageProyecto(event: any){
-    console.log(event);
-   if(event.target.files.length > 0){
-   const file = event.target.files[0];
-   const reader = new FileReader();
-   reader.readAsDataURL(file);
-  reader.onload = (event: any) =>{
-  this.imgURL = event.target.result;
-   }
-   this.imageProyecto= file;
+ // selectImageProyecto(event: any){
+  //console.log(event);
+   //if(event.target.files.length > 0){
+   //const file = event.target.files[0];
+   //const reader = new FileReader();
+   //reader.readAsDataURL(file);
+  //reader.onload = (event: any) =>{
+  //this.imgURL = event.target.result;
+   //}
+   //this.imageProyecto= file;
 
-   }
-  }
-  onSubmit(){
+   //}
+  //}
+  //onSubmit(){
 
-  }
+  //}
 
 
 }

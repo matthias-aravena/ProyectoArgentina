@@ -1,8 +1,9 @@
 <div class="row" >
      <div class="text-aling">
     <h1>Experiencia Laboral</h1>
-    
+    <div class="agre">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">agregar experiencia</button>
+    </div>
     <!-- Button trigger modal -->
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -14,12 +15,16 @@
           </div>
           <div class="modal-body">
           <form action="">
-              <label for="nombreTrabajo"> Una experiencia mas</label>
+            <div class="form-group">
+              <label for="nombreTrabajo"> Una experiencia mas: </label>
               <input type="text" id="nombreTrabajo" name="nombreTrabajo" [(ngModel)]="nuevaExperiencia.nombreTrabajo">
-               <br>
-              <label for="descTrabajo">Descripcion</label>
+            </div>
+              <br>
+              <div class="form-group">
+              <label for="descTrabajo">Descripcion: </label>
               <input type="text" id="descTrabajo" name="descTrabajo" [(ngModel)]="nuevaExperiencia.descTrabajo">
-          </form>
+            </div>
+            </form>
            </div>
            <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -28,22 +33,24 @@
           </div>
         </div>
     </div>
-    
-    </div>   
+
+    </div>
     <div class="col-lg-1"></div>
     <div class="col-lg-11">
-        <div *ngFor="let experiencia of lista">
+        <div  *ngFor="let experiencia of lista">
         <ul>
             <li>
-            <h1>{{experiencia.nombreTrabajo}}</h1> - <h3>(años)</h3>
-            
-            <p>{{experiencia.descTrabajo}}
-            </p>
-            
-            <button  class="btn btn-danger" (click)="eliminarExperiencia(experiencia.id)">Eliminar</button>
-            <button class="btn btn-warning" [routerLink]="['/editexperiencia/', experiencia.id]">Editar</button>
-         </ul>   
+            <h1>{{experiencia.nombreTrabajo}}</h1>
+
+            <p>{{experiencia.descTrabajo}}</p>
+
+            <button class="btn btn-primary" (click)="eliminarExperiencia(experiencia.id)">Eliminar</button>
+
+
+            <button class="btn btn-primary" [routerLink]="['/editexperiencia/', experiencia.id]">Editar</button>
+          </ul>
+        </div>
+
          </div>
-    </div> 
-    
-   
+    </div>
+

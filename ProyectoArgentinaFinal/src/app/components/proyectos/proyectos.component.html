@@ -1,65 +1,65 @@
-<div class="container">
-<div class="row">
+
+  <div class="row">
     <h1>Proyectos</h1>
+    <div class="form-group aling-item">
     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal7" >Agregar Proyecto</button>
-            <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel7" aria-hidden="true">
-              <div class="modal-dialog">
-             <div class="modal-content">
-     <div class="modal-header">
-     <h5 class="modal-title" id="exampleModalLabel7">Agregar Proyecto</h5>
-     <button type="button" class="btn-close" data-bs-dismiss="modal"    aria-label="Close"></button>
+    <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel7" aria-hidden="true">
+      <div class="modal-dialog">
+     <div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLabel7">Agregar Proyecto</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal"    aria-label="Close"></button>
+</div>
+<div class="modal-body">
+<form action="">
+ <label for="tituloProyecto">Titulo</label>
+ <input type="text" id="tituloProyecto" name="tituloProyecto" [(ngModel)]="nuevoProyecto.tituloProyecto">
+  <br>
+ <label for="descProyecto">Descripcion</label>
+ <input type="text" id="descProyecto" name="descProyecto" [(ngModel)]="nuevoProyecto.descProyecto">
+</form>
+</div>
+<div class="modal-footer" *ngFor="let proyecto of lista">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+<button type="button" class="btn btn-primary" (click)="agregarProyectos()">Guardar</button>
+
+</div>
      </div>
-     <div class="modal-body">
-     <form action="">
-         <label for="tituloProyecto">Titulo</label>
-         <input type="text" id="tituloProyecto" name="tituloProyecto" [(ngModel)]="nuevoProyecto.tituloProyecto">
+      </div>
+     </div>
+    </div>
+     <div class="contenedor"  *ngFor="let proyecto of lista">
+      <div >
+        <div class="parte1">
+        <div type="button" class="lapizProyecto2" [routerLink]="['/editproyecto/', proyecto.id]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+            </svg>
+          </div>
+
+         <h1>{{proyecto.tituloProyecto}}</h1>
           <br>
-         <label for="descProyecto">Descripcion</label>
-         <input type="text" id="descProyecto" name="descProyecto" [(ngModel)]="nuevoProyecto.descProyecto">
-     </form>
-      </div>
-      <div class="modal-footer">
-       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      <button type="button" class="btn btn-primary" (click)="agregarProyectos()">Guardar</button>
-      </div>
-             </div>
-              </div>
-         </div>
-        <div  *ngFor="let proyecto of lista">
-          <div class="col">
-          <div type="button" class="lapizProyecto2" [routerLink]="['/editproyecto/', proyecto.id]">
-
-               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-              </svg>
-
+          <p>{{proyecto.descProyecto}}</p>
 
 
         </div>
-            <h1>{{proyecto.tituloProyecto}}</h1>
-            <br>
-            <p>{{proyecto.descProyecto}}</p>
+       </div>
 
-
-          </div>
-          <div class="col">
-            <div type="button" class="lapizProyecto" data-bs-toggle="modal" data-bs-target="#exampleModal5">
-
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                </svg>
-              </div>
-
-              <div class="circulo"></div>
-               <div class="proyec">
-               <img [src]="imgURL" alt="">
-              </div>
-            </div>
-    </div>
+       <div class="parte2">
+        <div class="circulo"></div>
+            <img [src]="proyecto.imagenProyecto" alt=""  class="img-fluid">
+        </div>
+        <div type="button" class="lapizProyecto" data-bs-toggle="modal" data-bs-target="#exampleModal5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+          </svg>
+         </div>
+         <button class="btn btn-primary" (click)="eliminarProyecto(proyecto.id)">Eliminar proyecto </button>
+  </div>
 </div>
-</div>
+
 
 <!--modal imagen proyecto-->
 
@@ -72,17 +72,17 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="onSubmit()">
-          <div class="form-group">
-              <label>Elegir</label>
-              <input class="form-control-file" type="file" name="image"
-                      accept="image/*" (change)="selectImageProyecto($event)"><br>
+        <form action="">
+          <div class="form-group" *ngFor="let proyecto of lista">
+              <label for="imagenProyecto">Elegir</label>
+              <input type="text" id="imagenProyecto" name="imagenProyecto"
+                   [(ngModel)]="proyecto.imagenProyecto"><br>
           </div>
           </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" >Cambiar</button>
+        <button type="button" class="btn btn-primary" (click)="modificarProyecto()">Cambiar</button>
       </div>
     </div>
   </div>

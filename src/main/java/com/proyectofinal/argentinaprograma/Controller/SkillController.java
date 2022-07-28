@@ -53,7 +53,7 @@ public class SkillController {
         return skillService.save(skillActual);
     }
     
-    @DeleteMapping("/experiencias/{id}")
+    @DeleteMapping("/skills/{id}")
     public void eliminar(@PathVariable Long id){
       skillService.delete(id);  
     }

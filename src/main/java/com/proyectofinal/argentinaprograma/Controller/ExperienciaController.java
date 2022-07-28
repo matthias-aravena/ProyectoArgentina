@@ -32,7 +32,7 @@ public class ExperienciaController {
         return experienciaService.findAll();
     }
     //guardar
-    @PreAuthorize("hasRole('ADMIN')")
+   
     @PostMapping("/experiencias")
     public Experiencia guardar(@RequestBody Experiencia experiencia){
         return experienciaService.save(experiencia);
@@ -43,7 +43,7 @@ public class ExperienciaController {
     }
     
     //actualizar
-    @PreAuthorize("hasRole('ADMIN')")
+    
     @PutMapping("/experiencias/{id}")
     public Experiencia actualizar(@RequestBody Experiencia experiencia, @PathVariable Long id ){
         Experiencia experienciaActual= experienciaService.findById(id);
@@ -51,7 +51,7 @@ public class ExperienciaController {
         experienciaActual.setDescTrabajo(experiencia.getDescTrabajo());
         return experienciaService.save(experienciaActual);
     }
-    @PreAuthorize("hasRole('ADMIN')")
+    
     @DeleteMapping("/experiencias/{id}")
     public void eliminar(@PathVariable Long id){
       experienciaService.delete(id);  

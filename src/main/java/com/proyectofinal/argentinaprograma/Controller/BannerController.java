@@ -33,19 +33,19 @@ public class BannerController {
         return bannerService.getBanner();
     }
     //guardar
-    @PreAuthorize("hasRole('ADMIN')")
+    
     @PostMapping("/banners")
     public void guardar(@RequestBody Banner banner){
         bannerService.save(banner);
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
+   
     @DeleteMapping("/banners/{id}")
     public void eliminar(@PathVariable Long id){
       bannerService.delete(id);  
     }
     //actualizar
-    @PreAuthorize("hasRole('ADMIN')")
+    
     @PutMapping("banners/{id}")
     public void updateBanner(@PathVariable Long id, @RequestBody Banner banner){
         

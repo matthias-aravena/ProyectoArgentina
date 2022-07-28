@@ -32,7 +32,7 @@ public class ProyectoController {
         return proyectoService.findAll();
     }
     //guardar
-    @PreAuthorize("hasRole('ADMIN')")
+    
     @PostMapping("/proyectos")
     public Proyecto guardar(@RequestBody Proyecto proyecto){
         return proyectoService.save(proyecto);
@@ -43,16 +43,15 @@ public class ProyectoController {
     }
     
     //actualizar
-    @PreAuthorize("hasRole('ADMIN')")
+    
     @PutMapping("/proyectos/{id}")
     public Proyecto actualizar(@RequestBody Proyecto proyecto, @PathVariable Long id ){
         Proyecto proyectoActual= proyectoService.findById(id);
-        proyectoActual.setImagenProyecto(proyecto.getImagenProyecto());
         proyectoActual.setTituloProyecto(proyecto.getTituloProyecto());
         proyectoActual.setDescProyecto(proyecto.getDescProyecto());
         return proyectoService.save(proyectoActual);
     }
-    @PreAuthorize("hasRole('ADMIN')")
+    
     @DeleteMapping("/proyectos/{id}")
     public void eliminar(@PathVariable Long id){
       proyectoService.delete(id);

@@ -8,7 +8,7 @@ import com.proyectofinal.argentinaprograma.Entity.Persona;
 import com.proyectofinal.argentinaprograma.Service.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,19 +32,19 @@ public class PersonaController {
         return ipersonaService.getPersona();
     }
     //guardar
-    //@PreAuthorize("hasRole('ADMIN')")
+    
     @PostMapping("/personas")
     public void guardar(@RequestBody Persona persona){
         ipersonaService.save(persona);
     }
     
-    //@PreAuthorize("hasRole('ADMIN')")
+    
     @DeleteMapping("/personas/{id}")
     public void eliminar(@PathVariable Long id){
       ipersonaService.delete(id);  
     }
     //actualizar
-    //@PreAuthorize("hasRole('ADMIN')")
+    
     @PutMapping("personas/{id}")
     public void updatePersona(@PathVariable Long id, @RequestBody Persona persona){
         

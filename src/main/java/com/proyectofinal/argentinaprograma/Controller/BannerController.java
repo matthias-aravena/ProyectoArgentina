@@ -27,33 +27,35 @@ public class BannerController {
     @Autowired
     private BannerService bannerService;
 
-//listar
+    //listar
     @GetMapping("/banners")
-    public List<Banner> listar(){
-        return bannerService.findAll();
+    public List<Banner> getBanner(){
+        return bannerService.getBanner();
     }
     //guardar
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/banners")
-    public Banner guardar(@RequestBody Banner banner){
-        return bannerService.save(banner);
+    public void guardar(@RequestBody Banner banner){
+        bannerService.save(banner);
+    }
+    
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/banners/{id}")
+    public void eliminar(@PathVariable Long id){
+      bannerService.delete(id);  
+    }
+    //actualizar
+    @PreAuthorize("hasRole('ADMIN')")
+    @PutMapping("banners/{id}")
+    public void updateBanner(@PathVariable Long id, @RequestBody Banner banner){
+        
+        Banner bannerActual= bannerService.findById(id);
+        bannerActual.setImagenBanner(banner.getImagenBanner());
+        bannerService.save(bannerActual);
     }
     @GetMapping("/banners/{id}")
     public Banner getBanner(@PathVariable Long id){
         return bannerService.findById(id);
     }
     
-    //actualizar
-    @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("banners/{id}")
-    public Banner actualizar(@RequestBody Banner banner, @PathVariable Long id ){
-        Banner bannerActual= bannerService.findById(id);
-        bannerActual.setImagenBanner(banner.getImagenBanner());
-        return bannerService.save(bannerActual);
-    }
-    @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping("/banners/{id}")
-    public void eliminar(@PathVariable Long id){
-      bannerService.delete(id);  
-    }
 }

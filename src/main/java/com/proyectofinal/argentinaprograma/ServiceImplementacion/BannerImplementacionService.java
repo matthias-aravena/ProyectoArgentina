@@ -17,24 +17,33 @@ import org.springframework.transaction.annotation.Transactional;
 public class BannerImplementacionService implements BannerService{
     @Autowired
     private RepoBanner repoBanner;
-    @Override
-    @Transactional(readOnly=true)
-    public List<Banner> findAll(){
-        return (List<Banner>) repoBanner.findAll();
-    }
+    
     @Override
     @Transactional(readOnly=false)
-    public Banner save(Banner banner){
-        return repoBanner.save(banner);
+    public void delete(Long id){
+        repoBanner.deleteById(id);
+    }
+    @Override
+    public void updateBanner(Banner banner){
+         repoBanner.save(banner);
     }
     @Override
     @Transactional(readOnly=true)
     public Banner findById(Long id){
         return repoBanner.findById(id).orElse(null);
     }
-    @Override
+     @Override
     @Transactional(readOnly=false)
-    public void delete(Long id){
-        repoBanner.deleteById(id);
+    public void save(Banner banner){
+        repoBanner.save(banner);
     }
+    @Override
+    @Transactional(readOnly=true)
+    public List<Banner> getBanner(){
+        List<Banner> listaBanner = repoBanner.findAll();
+        return listaBanner;
+    }
+   
+    
+    
 }

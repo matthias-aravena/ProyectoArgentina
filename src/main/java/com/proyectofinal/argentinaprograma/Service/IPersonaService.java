@@ -11,10 +11,12 @@ import java.util.List;
 public interface IPersonaService {
     public List<Persona> getPersona();
     
-    public void savePersona(Persona persona);
+    public void save(Persona persona);
     
-    public void deletePersona(Long id);
+    public void delete(Long id);
     
-    public Persona findPersona(Long id);
+    public void updatePersona(Persona persona);
+    
+    public Persona findById(Long id);
     
     }

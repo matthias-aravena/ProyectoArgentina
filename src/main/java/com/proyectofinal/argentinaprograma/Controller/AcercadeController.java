@@ -7,6 +7,7 @@ package com.proyectofinal.argentinaprograma.Controller;
 import com.proyectofinal.argentinaprograma.Entity.Acercade;
 import com.proyectofinal.argentinaprograma.Service.AcercadeService;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
@@ -36,7 +39,9 @@ public class AcercadeController {
     @PostMapping("/acerca")
     public Acercade guardar(@RequestBody Acercade acercade){
         return acercadeService.save(acercade);
+        
     }
+    
     @GetMapping("/acerca/{id}")
     public Acercade getAcercade(@PathVariable Long id){
         return acercadeService.findById(id);
@@ -45,7 +50,7 @@ public class AcercadeController {
     //actualizar
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/acerca/{id}")
-    public Acercade actualizar(@RequestBody Acercade acercade, @PathVariable Long id ){
+    public Acercade actualizar(@PathVariable Long id, @RequestBody Acercade acercade){
         Acercade acercadeActual= acercadeService.findById(id);
         acercadeActual.setNombre(acercade.getNombre());
         acercadeActual.setTitulo(acercade.getTitulo());

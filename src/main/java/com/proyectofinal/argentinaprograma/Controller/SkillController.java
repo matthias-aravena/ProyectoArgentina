@@ -8,7 +8,7 @@ import com.proyectofinal.argentinaprograma.Entity.Skill;
 import com.proyectofinal.argentinaprograma.Service.SkillService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +32,7 @@ public class SkillController {
         return skillService.findAll();
     }
     //guardar
-    @PreAuthorize("hasRole('ADMIN')")
+    
     @PostMapping("/skills")
     public Skill guardar(@RequestBody Skill skill){
         return skillService.save(skill);
@@ -43,7 +43,7 @@ public class SkillController {
     }
     
     //actualizar
-    @PreAuthorize("hasRole('ADMIN')")
+    
     @PutMapping("/skills/{id}")
     public Skill actualizar(@RequestBody Skill skill, @PathVariable Long id ){
         Skill skillActual= skillService.findById(id);
@@ -52,7 +52,7 @@ public class SkillController {
         skillActual.setPorcentajeSkill(skill.getPorcentajeSkill());
         return skillService.save(skillActual);
     }
-    @PreAuthorize("hasRole('ADMIN')")
+    
     @DeleteMapping("/experiencias/{id}")
     public void eliminar(@PathVariable Long id){
       skillService.delete(id);  

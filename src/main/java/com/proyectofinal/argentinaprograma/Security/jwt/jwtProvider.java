@@ -34,7 +34,8 @@ public class jwtProvider {
     public String generateToken(Authentication authentication) {
         
         UsuarioPrincipal usuarioPrincipal = (UsuarioPrincipal) authentication.getPrincipal();
-        List<String> roles = usuarioPrincipal.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
+        List<String> roles = usuarioPrincipal.getAuthorities().stream().map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList());
         return Jwts.builder().setSubject(usuarioPrincipal.getUsername())
                 .setIssuedAt(new Date()).setExpiration(new Date(new Date()
                 .getTime() + expiration * 1000)).signWith(SignatureAlgorithm.HS512, secret.getBytes()).compact();
@@ -48,7 +49,7 @@ public class jwtProvider {
             Jwts.parser().setSigningKey(secret.getBytes()).parseClaimsJws(token);    
             return true;
         }catch (MalformedJwtException e){
-            logger.error("token Mal formado");
+            logger.error("token Mal formado" + e.getMessage());
         }catch (UnsupportedJwtException e){
             logger.error("token no soportado");
         }catch (ExpiredJwtException e){

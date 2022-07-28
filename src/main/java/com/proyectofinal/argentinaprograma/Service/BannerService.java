@@ -10,8 +10,16 @@ import java.util.List;
 
 
 public interface BannerService {
-    public List<Banner> findAll();
-    public Banner save(Banner banner);
-    public Banner findById(Long id);
+    
+    public List<Banner> getBanner();
+    
+    public void save(Banner banner);
+    
     public void delete(Long id);
+    
+    public void updateBanner(Banner banner);
+    
+    public Banner findById(Long id);
+    
+    
 }

@@ -10,31 +10,36 @@ import com.proyectofinal.argentinaprograma.Repository.IPersonaRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ImPersonaService implements IPersonaService{
-   @Autowired IPersonaRepository ipersonaRepository; 
+   @Autowired 
+   IPersonaRepository ipersonaRepository; 
     
-    
     @Override
-    public List<Persona> getPersona() {
-        List<Persona> persona = ipersonaRepository.findAll();
-        return persona;
-    }
-
-    @Override
-    public void savePersona(Persona persona) {
-        ipersonaRepository.save(persona);
-    }
-
-    @Override
-    public void deletePersona(Long id) {
+    @Transactional(readOnly=false)
+    public void delete(Long id){
         ipersonaRepository.deleteById(id);
     }
-
     @Override
-    public Persona findPersona(Long id) {
-        Persona persona = ipersonaRepository.findById(id).orElse(null);
-        return persona;
+    public void updatePersona(Persona persona){
+         ipersonaRepository.save(persona);
+    }
+    @Override
+    @Transactional(readOnly=true)
+    public Persona findById(Long id){
+        return ipersonaRepository.findById(id).orElse(null);
+    }
+     @Override
+    @Transactional(readOnly=false)
+    public void save(Persona persona){
+        ipersonaRepository.save(persona);
+    }
+    @Override
+    @Transactional(readOnly=true)
+    public List<Persona> getPersona(){
+        List<Persona> listaPer = ipersonaRepository.findAll();
+        return listaPer;
     }
  }

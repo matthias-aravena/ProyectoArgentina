@@ -10,7 +10,7 @@ import { proyectoService } from 'src/app/service/proyecto.service';
 })
 export class ProyeditComponent implements OnInit {
   id: string ="";
-  editProyecto : Proyecto = {id:'', imagenProyecto:'',tituloProyecto:''  , descProyecto:''};
+  editProyecto : Proyecto={id:'',tituloProyecto:'',descProyecto:''};
   constructor(private ProyectoService: proyectoService,
               private activatedRoute: ActivatedRoute,
               private router: Router ) { }
@@ -27,4 +27,5 @@ export class ProyeditComponent implements OnInit {
       this.router.navigate(['/home']);}
      );
     }
-}
+
+  }

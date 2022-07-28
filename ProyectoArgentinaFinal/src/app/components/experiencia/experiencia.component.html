@@ -2,7 +2,7 @@
      <div class="text-aling">
     <h1>Experiencia Laboral</h1>
     <div class="agre">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">agregar experiencia</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" *ngIf="isAdmin">agregar experiencia</button>
     </div>
     <!-- Button trigger modal -->
     <!-- Modal -->
@@ -44,10 +44,10 @@
 
             <p>{{experiencia.descTrabajo}}</p>
 
-            <button class="btn btn-primary" (click)="eliminarExperiencia(experiencia.id)">Eliminar</button>
+            <button class="btn btn-primary" (click)="eliminarExperiencia(experiencia.id)" *ngIf="isAdmin">Eliminar</button>
 
 
-            <button class="btn btn-primary" [routerLink]="['/editexperiencia/', experiencia.id]">Editar</button>
+            <button class="btn btn-primary" [routerLink]="['/editexperiencia/', experiencia.id]" *ngIf="isAdmin">Editar</button>
           </ul>
         </div>
 

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Proyecto } from 'src/app/Model/proyecto.model';
 import { proyectoService } from 'src/app/service/proyecto.service';
+import { TokenService } from 'src/app/service/token.service';
 
 @Component({
   selector: 'app-proyectos',
@@ -10,19 +11,27 @@ import { proyectoService } from 'src/app/service/proyecto.service';
   styleUrls: ['./proyectos.component.css']
 })
 export class ProyectosComponent implements OnInit {
-  
-  id: string ="";
-  editProyecto : Proyecto = {id:'', imagenProyecto:'',tituloProyecto:''  , descProyecto:''};
+
+
 
   lista:any=[];
-  nuevoProyecto: Proyecto={id:'', imagenProyecto:'',tituloProyecto:''  , descProyecto:''};
+  nuevoProyecto: Proyecto={id:'',tituloProyecto:''  , descProyecto:''};
 
+  roles: string[];
+  isAdmin = false;
   constructor(private ProyectoService: proyectoService,
               private http: HttpClient,
-              private router: Router ) { }
+              private router: Router,
+              private tokenService: TokenService ) { }
 
   ngOnInit(): void {
     this.listarProyectos();
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if(rol === 'ROLE_ADMIN'){
+        this.isAdmin = true;
+      }
+    });
   }
   listarProyectos(){
     this.ProyectoService.getProyectos().subscribe(
@@ -39,12 +48,7 @@ export class ProyectosComponent implements OnInit {
       res=>{this.listarProyectos();}
     );
   }
-  modificarProyecto(){
-    this.ProyectoService.editarProyecto(this.id, this.editProyecto).subscribe(
-      data=>{
-      this.router.navigate(['/home']);}
-     );
-    }
+
 
  // selectImageProyecto(event: any){
   //console.log(event);

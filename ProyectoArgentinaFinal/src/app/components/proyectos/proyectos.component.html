@@ -1,6 +1,6 @@
 
   <div class="row">
-    <h1>PROYECTOS</h1>
+    <h1>Proyecto</h1>
     <div class="form-group aling-item">
     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal7" *ngIf="isAdmin">Agregar Proyecto</button>
     <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel7" aria-hidden="true">
@@ -37,11 +37,12 @@
               <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
             </svg>
           </div>
+         <ul>
 
-         <h1>{{proyecto.tituloProyecto}}</h1>
+          <li> <h2>{{proyecto.tituloProyecto}}</h2></li>
           <br>
-          <p>{{proyecto.descProyecto}}</p>
-
+            <p>{{proyecto.descProyecto}}</p>
+        </ul>
 
         </div>
        </div>

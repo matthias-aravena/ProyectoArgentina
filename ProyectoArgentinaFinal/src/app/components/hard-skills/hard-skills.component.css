@@ -6,5 +6,10 @@
 }
 .row{
     padding: 20px;
+    background-color: rgb(183, 203, 204);
+}
+h1{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
 }
 

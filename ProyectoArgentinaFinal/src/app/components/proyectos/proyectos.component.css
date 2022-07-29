@@ -1,5 +1,7 @@
 .row{
     padding: 20px;
+    background-color: rgb(32, 175, 188);
+    color: whitesmoke;
     }
 .contenedor{
     width: auto;
@@ -30,5 +32,8 @@
   background-color: darkcyan;
 }
 h1{
-  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+}
+ul{
+  margin-left: 40px;
 }

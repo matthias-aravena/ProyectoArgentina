@@ -94,15 +94,30 @@ h2{
   left: 10px;
   margin-top: 62px;
   text-transform: uppercase;
-  color: rgb(105, 105, 243);
+  color: rgb(11, 11, 13);
 
 }
 h4{
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   left: 10px;
-  color: rgb(105, 105, 243);
+  color: rgb(10, 10, 12);
+  font-size: 19px;
 }
 .acertitu{
   text-transform: uppercase;
-  margin-top: 46px;
+  margin-top: 70px;
+  font-size: 30px;
+}
+p{
+  color: rgb(7, 1, 1);
+  font-size: 20px;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.titu h4{
+  font-size: 25px;
+  color: black;
 }

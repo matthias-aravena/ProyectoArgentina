@@ -9,7 +9,7 @@ import { Banner } from "../Model/banner.model";
 })
 
 export class bannerService {
-    url='http://localhost:8080/banner/banners';
+    url='https://argentinaprograma04.herokuapp.com/banner/banners';
     constructor(private http: HttpClient) { }
 
     getBanners():Observable<any>{
@@ -23,7 +23,7 @@ export class bannerService {
         return this.http.post(this.url, banner);
     }
     editarBanner(id: string, banner: Banner):Observable<any>{
-        return this.http.put<any>(this.url+'/'+id, banner); 
+        return this.http.put<any>(this.url+'/'+id, banner);
     }
 
     deleteBanner(id:string):Observable<any>{

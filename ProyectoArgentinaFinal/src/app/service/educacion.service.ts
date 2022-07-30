@@ -8,7 +8,7 @@ import { Educacion } from "../Model/educacion.model";
 })
 
 export class educacionService {
-    url='http://localhost:8080/educacion/educaciones';
+    url='https://argentinaprograma04.herokuapp.com/educacion/educaciones';
     constructor(private http: HttpClient) { }
 
     getEducaciones():Observable<any>{
@@ -22,7 +22,7 @@ export class educacionService {
         return this.http.post(this.url, educacion);
     }
     editarEducacion(id: string, educacion: Educacion):Observable<any>{
-        return this.http.put<any>(this.url+'/'+id, educacion); 
+        return this.http.put<any>(this.url+'/'+id, educacion);
     }
 
     deleteEducacion(id:string):Observable<any>{

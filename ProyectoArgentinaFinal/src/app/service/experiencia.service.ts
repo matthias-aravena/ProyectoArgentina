@@ -9,7 +9,7 @@ import { Experiencia } from "../Model/experiencia.model";
 })
 
 export class experienciaService {
-    url='http://localhost:8080/experiencia/experiencias';
+    url='https://argentinaprograma04.herokuapp.com/experiencia/experiencias';
     constructor(private http: HttpClient) { }
 
     getExperiencias():Observable<any>{
@@ -23,7 +23,7 @@ export class experienciaService {
         return this.http.post(this.url, experiencia);
     }
     editarExperiencia(id: string, experiencia: Experiencia):Observable<any>{
-        return this.http.put<any>(this.url+'/'+id, experiencia); 
+        return this.http.put<any>(this.url+'/'+id, experiencia);
     }
 
     deleteExperiencia(id:string):Observable<any>{

@@ -10,7 +10,7 @@ import { Acercade } from "../Model/acercade.model";
 })
 
 export class acercadeService {
-    url='http://localhost:8080/acercade/acerca';
+    url='https://argentinaprograma04.herokuapp.com/acercade/acerca';
     constructor(private http: HttpClient) { }
 
     getAcercade():Observable<any>{

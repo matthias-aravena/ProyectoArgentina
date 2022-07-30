@@ -10,7 +10,7 @@ import { Proyecto } from "../Model/proyecto.model";
 })
 
 export class proyectoService {
-    url='http://localhost:8080/proyecto/proyectos';
+    url='https://argentinaprograma04.herokuapp.com/proyecto/proyectos';
     constructor(private http: HttpClient) { }
 
     getProyectos():Observable<any>{
@@ -24,7 +24,7 @@ export class proyectoService {
         return this.http.post(this.url, proyecto);
     }
     editarProyecto(id: string, proyecto: Proyecto):Observable<any>{
-        return this.http.put<any>(this.url+'/'+id, proyecto); 
+        return this.http.put<any>(this.url+'/'+id, proyecto);
     }
 
     deleteProyecto(id:string):Observable<any>{
